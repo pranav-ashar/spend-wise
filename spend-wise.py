@@ -1,15 +1,58 @@
-
+# SPEND-WISE
 name = input("Enter your name : ")
 print(f"Hello, {name} Welcome to the Expense Tracker !")
 
-# print("""
-#  __________
-# ( |||      )
-#  ‾‾‾‾‾‾‾‾‾‾""")
+def category():
+    print(f"""
+======== Select Category ========
+1. Food & Dining
+2. Groceries
+3. Transportation
+4. Bills & Utilities
+5. Shopping
+6. Education
+7. Healthcare
+8. Entertainment
+9. Tours & Picnic
+10. Personal / Miscellaneous
+11. Other
+=================================  
+""") 
+       
+    user_response = int(input("Choose Category : "))
+
+    if(user_response == 1):
+        print("Food & Dining")
+    elif(user_response == 2):
+        print("Groceries")
+    elif(user_response == 3):
+        print("Transportation")
+    elif(user_response == 4):
+        print("Bills & Utilities")
+    elif(user_response == 5):
+        print("Shopping")
+    elif(user_response == 6):
+        print("Education")
+    elif(user_response == 7):
+        print("Healthcare")
+    elif(user_response == 8):
+        print("Entertainment")
+    elif(user_response == 9):
+        print("Tours and Picnic")
+    elif(user_response == 10):
+        print("Personal / Miscellaneous")
+    elif(user_response == 11):
+        print("Other")
+    else:
+        print("INVALID RESPONSE")
+
+def add_expense():
+    category()
 
 
 def menu():
     print("""
+======= MENU =======
 1. Add Expense
 2. View All Expenses
 3. Search Expense
@@ -20,12 +63,13 @@ def menu():
 8. Edit Expense
 9. Delete Expense
 10. Exit
+=====================
 """)
 
-    user_response = int(input("User Response : "))
+    user_response = int(input("Chose Option : "))
 
     if (user_response == 1):
-        print("Add Expense")
+        add_expense()
     elif (user_response == 2):
         print("View All Expenses")
     elif (user_response == 3):
@@ -45,7 +89,8 @@ def menu():
     elif (user_response == 10):
         print("Exiting the Expense Tracker. Goodbye!")
     else:
-        print("Invalid Response")
+        print("INVALID RESPONSE")
+        menu()
 
-while True:
-    menu()
+
+menu()
