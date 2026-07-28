@@ -3,7 +3,6 @@
 A Python-based personal finance tracker that helps users record, organize, and analyze your daily expenses.
 
 The functions of the Finance Tracker are :
-
 1. Add Expense
 2. View Expenses
 3. Search Expense
@@ -13,6 +12,6 @@ The functions of the Finance Tracker are :
 7. Savings Report
 8. Edit Expense
 9. Delete Expense
-& More
+& Much More
 
 > 🚧 This project is currently under development.
