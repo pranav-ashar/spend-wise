@@ -12,6 +12,6 @@ The functions of the Finance Tracker are :
 7. Savings Report
 8. Edit Expense
 9. Delete Expense
-& Much More
+   & More
 
 > 🚧 This project is currently under development.
