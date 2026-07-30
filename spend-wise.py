@@ -1,48 +1,14 @@
 # SPEND - WISE
-tracker = {
-    "1. Food & Dining" : {
-        
-    },
+# name = input("Enter your name : ")
+# print(f"Hello, {name} Welcome to the Expense Tracker !")
 
-    "2. Groceries" : {
+# Expense used bar 
+# print("""
+#  __________
+# ( |||      )
+#  ‾‾‾‾‾‾‾‾‾‾""")
 
-    },
-
-    "3. Transportation" : {
-
-    },
-
-    "4. Bills & Utilities" : {
-
-    },
-
-    "5. Shopping" : {
-
-    },
-
-    "6. Education" : {
-
-    },
-
-    ""
-    "7. Healthcare" : {
-
-    },
-
-    "8. Entertainment" : {
-
-    },
-
-    "9. Tours & Picnic" : {
-
-    },
-
-    "10. Personal / Miscellaneous" : {
-
-    },
-}
-
-
+expenses = []
 
 def category():
     print(f"""
@@ -64,31 +30,31 @@ def category():
     user_response = int(input("Choose Category : "))
 
     if(user_response == 1):
-        val = "1. Food & Dining"
+        val = "Food & Dining"
         return val
     elif(user_response == 2):
-        val = "2. Groceries"
+        val = "Groceries"
         return val
     elif(user_response == 3):
-        val = "3. Transportation"
+        val = "Transportation"
         return val        
     elif(user_response == 4):
-        val = "4. Bills & Utilities"
+        val = "Bills & Utilities"
         return val
     elif(user_response == 5):
-        val = "5. Shopping"
+        val = "Shopping"
         return val
     elif(user_response == 6):
-        val = "6. Education"
+        val = "Education"
         return val
     elif(user_response == 7):
-        val = "7. Healthcare"
+        val = "Healthcare"
         return val
     elif(user_response == 8):
-        val = "8. Entertainment"
+        val = "Entertainment"
         return val
     elif(user_response == 9):
-        val = "9. Tours & Picnic"
+        val = "Tours & Picnic"
         return val
     elif(user_response == 10):
         val = "Personal / Miscellaneous"
@@ -100,12 +66,19 @@ def category():
         print("INVALID RESPONSE")
 
 def add_expense():
+    global ID
     value = category()
-    print()
     expense_name = input("Expense Name : ")
-    expense_amt = int(input("Expense Amount : "))
-    tracker[value][expense_name] = expense_amt
-    print(f"{expense_name} is added succesfully")
+    expense_amt = input("Expense Amount : ")
+
+    expenses.append({
+        "Tracker ID" : ID,
+        "Category" : value,
+        "Name" : expense_name,
+        "Amount" : expense_amt
+    })
+    print(expenses)
+    ID += 1
     menu()
 
 def menu():
@@ -151,4 +124,5 @@ def menu():
         menu()
 
 
+ID = 1
 menu()
