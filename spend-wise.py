@@ -67,19 +67,33 @@ def category():
 
 def add_expense():
     global ID
+    transaction_ID = ID
     value = category()
+    print()
     expense_name = input("Expense Name : ")
     expense_amt = input("Expense Amount : ")
 
     expenses.append({
-        "Tracker ID" : ID,
+        "Tracker ID" : transaction_ID,
         "Category" : value,
         "Name" : expense_name,
         "Amount" : expense_amt
     })
-    print(expenses)
     ID += 1
     menu()
+
+def view_expense():
+    print()
+    for expense in expenses:
+        print(f"""|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+| Category       : {expense["Category"]}   
+| Expense        : {expense["Name"]}       
+| Amount         : {expense["Amount"]}     
+| Transaction ID : {expense["Tracker ID"]}  
+|___________________________________________
+""")
+    menu()
+        
 
 def menu():
     print("""
@@ -92,7 +106,7 @@ def menu():
 6. Budget Tracker
 7. Savings Report
 8. Edit Expense
-9. Delete Expense
+9. Remove Expense
 10. Exit
 =====================
 """)
@@ -102,7 +116,7 @@ def menu():
     if (user_response == 1):
         add_expense()
     elif (user_response == 2):
-        print("View All Expenses")
+        view_expense()
     elif (user_response == 3):
         print("Search Expense")
     elif (user_response == 4):
@@ -116,7 +130,7 @@ def menu():
     elif (user_response == 8):
         print("Edit Expense")
     elif (user_response == 9):
-        print("Delete Expense")
+        print("Remove Expense")
     elif (user_response == 10):
         print("Exiting the Expense Tracker. Goodbye!")
     else:
