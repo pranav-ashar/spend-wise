@@ -1,6 +1,6 @@
 # SPEND - WISE
-# name = input("Enter your name : ")
-# print(f"Hello, {name} Welcome to the Expense Tracker !")
+name = input("Enter your name : ")
+print(f"Hello, {name} Welcome to the Expense Tracker !")
 
 # Expense used bar 
 # print("""
@@ -80,6 +80,7 @@ def add_expense():
         "Amount" : expense_amt
     })
     ID += 1
+    print("Expense is added Succesfully !")
     menu()
 
 def view_expense():
