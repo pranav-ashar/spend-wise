@@ -64,15 +64,14 @@ def category():
         return val
     else:
         print("INVALID RESPONSE")
+        menu()
 
 def add_expense():
     global ID
     transaction_ID = ID
     value = category()
-    print()
     expense_name = input("Expense Name : ")
-    expense_amt = input("Expense Amount : ")
-
+    expense_amt = int(input("Expense Amount : "))
     expenses.append({
         "Tracker ID" : transaction_ID,
         "Category" : value,
@@ -94,6 +93,86 @@ def view_expense():
 |___________________________________________
 """)
     menu()
+
+def search_expense():
+    print("""
+======= SEARCH BY =======
+1. Category
+2. Name
+3. Amount
+4. ID
+5. RETURN TO MENU
+========================
+""")
+    user_response = int(input("Chose Option : "))
+
+    # Search by Category
+    if user_response == 1:
+        value = category()
+        for expense in expenses:
+            if expense["Category"] == value:
+                print(f"""
+|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+| Category       : {expense["Category"]}   
+| Expense        : {expense["Name"]}       
+| Amount         : {expense["Amount"]}     
+| Transaction ID : {expense["Tracker ID"]}  
+|___________________________________________
+""")        
+            else:
+                print("No Expenses in Category")
+        menu()
+
+
+        
+    elif user_response == 2:
+        print("SEARCH BY NAME")
+
+    #Search by Amount
+    elif user_response == 3:
+        print("Enter the Range")
+        min = int(input("Minimum Amount : "))
+        max = int(input("Maximum Amount : "))
+        for expense in expenses:
+            if min <= expense["Amount"] <= max:
+                print(f"""
+|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+| Category       : {expense["Category"]}   
+| Expense        : {expense["Name"]}       
+| Amount         : {expense["Amount"]}     
+| Transaction ID : {expense["Tracker ID"]}  
+|___________________________________________
+""")
+            else:
+                print("No Expense Found")
+                menu()
+        menu()        
+
+    # Search by ID
+    elif user_response == 4:
+        transaction_ID = int(input("Enter the ID : "))
+        for expense in expenses:
+            if expense["Tracker ID"] == transaction_ID:
+                print(f"""
+|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+| Category       : {expense["Category"]}   
+| Expense        : {expense["Name"]}       
+| Amount         : {expense["Amount"]}     
+| Transaction ID : {expense["Tracker ID"]}  
+|___________________________________________
+""")        
+            else:
+                print("INVALID ID")
+                menu()
+        menu()
+
+    # Return to Menu
+    elif user_response == 5:
+        menu()
+
+    else:
+        print("INVALID OPTION !")
+        search_expense()
         
 
 def menu():
@@ -119,7 +198,7 @@ def menu():
     elif (user_response == 2):
         view_expense()
     elif (user_response == 3):
-        print("Search Expense")
+        search_expense()
     elif (user_response == 4):
         print("Monthly Summary")
     elif (user_response == 5):
