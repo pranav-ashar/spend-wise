@@ -123,10 +123,24 @@ def search_expense():
                 print("No Expenses in Category")
         menu()
 
-
-        
+    # Search By Name
     elif user_response == 2:
-        print("SEARCH BY NAME")
+        search = input("Expense Name : ")
+        for expense in expenses:
+            if search.lower() in expense["Name"].lower():
+                print(f"""
+|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+| Category       : {expense["Category"]}   
+| Expense        : {expense["Name"]}       
+| Amount         : {expense["Amount"]}     
+| Transaction ID : {expense["Tracker ID"]}  
+|___________________________________________
+""") 
+            else:
+                print()
+                print("No Expense Record Found")
+                menu()
+        menu()
 
     #Search by Amount
     elif user_response == 3:
