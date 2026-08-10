@@ -2,6 +2,8 @@
 name = input("Enter your name : ")
 print(f"Hello, {name} Welcome to the Expense Tracker !")
 
+budget = int(input("What's your Monthly Budget : "))
+
 # Expense used bar 
 # print("""
 #  __________
@@ -66,8 +68,11 @@ def category():
         print("INVALID RESPONSE")
         menu()
 
+
 def add_expense():
+    global total_expense
     global ID
+    ID += 1
     transaction_ID = ID
     value = category()
     expense_name = input("Expense Name : ")
@@ -78,7 +83,8 @@ def add_expense():
         "Name" : expense_name,
         "Amount" : expense_amt
     })
-    ID += 1
+    
+    total_expense += expense_amt
     print("Expense is added Succesfully !")
     menu()
 
@@ -187,6 +193,18 @@ def search_expense():
     else:
         print("INVALID OPTION !")
         search_expense()
+
+def monthly_summary():
+    print(f"""
+======= MONTHLY SUMMARY =======
+Total Spending         : {total_expense}
+Total Transactions     : {ID}
+
+Highest Expense        : {max(expense["Amount"] for expense in expenses)}
+Lowest Expense         : {min(expense["Amount"] for expense in expenses)}
+
+================================
+""")
         
 
 def menu():
@@ -214,7 +232,7 @@ def menu():
     elif (user_response == 3):
         search_expense()
     elif (user_response == 4):
-        print("Monthly Summary")
+        monthly_summary()
     elif (user_response == 5):
         print("Category Analysis")
     elif (user_response == 6):
@@ -232,5 +250,7 @@ def menu():
         menu()
 
 
-ID = 1
+ID = 0
+total_expense = 0
 menu()
+
