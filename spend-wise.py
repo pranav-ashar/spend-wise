@@ -68,6 +68,14 @@ def category():
         print("INVALID RESPONSE")
         menu()
 
+# def monthly_statistics():
+#     print("Monthly Statistics")
+#     total = 0
+#     count = 0 
+#     highest = 0
+#     lowest = 0
+    
+
 
 def add_expense():
     global total_expense
@@ -202,6 +210,9 @@ Total Transactions     : {ID}
 
 Highest Expense        : {max(expense["Amount"] for expense in expenses)}
 Lowest Expense         : {min(expense["Amount"] for expense in expenses)}
+
+Budget Spent :         : {total_expense}/{budget}
+Percentage Utilized    : {(total_expense / budget)*100} %
 
 ================================
 """)
